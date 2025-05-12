@@ -10,6 +10,8 @@ export default function Home() {
   const [destination, setDestination] = useState("")
   const [date, setDate] = useState("")
   const [travelers, setTravelers] = useState("")
+  const [days, setDays] = useState("");
+
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -38,8 +40,8 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="max-w-2xl text-white"
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 mt-10">Your Trusted Partner for Umrah Journey</h1>
-              <p className="text-lg mb-6">Embarking Your Faith</p>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 mt-10">Your Spiritual Travel <br/> Partner For Umrah</h1>
+              <p className="text-lg mb-6">Journeying In Faith</p>
               <Link
                 href="/packages"
                 className="bg-white text-purple-700 px-6 py-3 rounded-md font-medium hover:bg-purple-50 transition duration-300 inline-flex items-center"
@@ -61,43 +63,65 @@ export default function Home() {
             className="bg-white rounded-lg shadow-lg p-6 -mt-20 relative z-10 max-w-4xl mx-auto"
           >
             <h2 className="text-xl font-bold text-center mb-4 text-purple-700">Quick Enquiry Form</h2>
-            <form className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <select
-                  value={destination}
-                  onChange={(e) => setDestination(e.target.value)}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                >
-                  <option value="">Select Destination</option>
-                  <option value="mecca">Mecca</option>
-                  <option value="medina">Medina</option>
-                  <option value="jeddah">Jeddah</option>
-                </select>
-              </div>
-              <div>
-                <input
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-              </div>
-              <div>
-                <select
-                  value={travelers}
-                  onChange={(e) => setTravelers(e.target.value)}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                >
-                  <option value="">Number of Travelers</option>
-                  <option value="1">1 Person</option>
-                  <option value="2">2 People</option>
-                  <option value="3">3 People</option>
-                  <option value="4">4+ People</option>
-                </select>
-              </div>
-            </form>
+      <form className="grid grid-cols-1 md:grid-cols-4 gap-4">
+  {/* Travel From */}
+  <div>
+    <label className="block text-sm font-medium text-gray-700 mb-1">Travel From</label>
+    <select
+      value={destination}
+      onChange={(e) => setDestination(e.target.value)}
+      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+    >
+      <option value="">Select Destination</option>
+      <option value="Islamabad">Islamabad</option>
+      <option value="Kharachi">Karachi</option>
+      <option value="mecca">Lahore</option>
+      <option value="Multan">Multan</option>
+      <option value="Peshawer">Peshawar</option>
+      <option value="Quetta">Quetta</option>
+      <option value="Sialkot">Sialkot</option>
+    </select>
+  </div>
+
+  {/* Travel Date */}
+  <div>
+    <label className="block text-sm font-medium text-gray-700 mb-1">Travel Date</label>
+    <input
+      type="date"
+      value={date}
+      onChange={(e) => setDate(e.target.value)}
+      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+    />
+  </div>
+
+  {/* No. of Travelers */}
+  <div>
+    <label className="block text-sm font-medium text-gray-700 mb-1">No. of Travelers</label>
+    <input
+      type="number"
+      value={travelers}
+      onChange={(e) => setTravelers(e.target.value)}
+      placeholder="No. of Travelers"
+      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+    />
+  </div>
+
+  {/* No. of Days */}
+  <div>
+    <label className="block text-sm font-medium text-gray-700 mb-1">No. of Days</label>
+    <input
+      type="number"
+      value={days}
+      onChange={(e) => setDays(e.target.value)}
+      placeholder="No. of Days"
+      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+    />
+  </div>
+</form>
+
+
             <div className="mt-4 text-center">
-              <button className="bg-purple-700 text-white px-6 py-3 rounded-md font-medium hover:bg-purple-800 transition duration-300">
+              <button className="bg-purple-700 text-white px-6 py-3 rounded-md font-extra hover:bg-purple-800 transition duration-300">
                 Submit Now
               </button>
             </div>
@@ -117,7 +141,7 @@ export default function Home() {
             className="text-white text-center max-w-4xl mx-auto mb-12"
           >
             <h2 className="text-3xl font-bold mb-4">
-              At TravelKaro, we strive to provide seamless Umrah travel experiences, ensuring every journey is memorable
+              At TravelOfTrust, we strive to provide seamless Umrah travel experiences, ensuring every journey is memorable
               and spiritually fulfilling.
             </h2>
             <p className="text-lg opacity-90">Where Devotion Meets Destination Magic</p>
@@ -267,7 +291,7 @@ export default function Home() {
           >
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Special Packages</h2>
             <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="text-xl font-bold text-gray-800">Ramzan Booking</span>
+              <span className="text-xl font-bold text-gray-800">Muharram ul Haram 1447</span>
               <span className="bg-purple-700 text-white px-3 py-1 rounded-md text-sm">is Open</span>
             </div>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -403,7 +427,7 @@ export default function Home() {
               className="relative"
             >
               <div className="w-[300px] h-[600px] bg-black rounded-[40px] overflow-hidden border-4 border-white/20 relative">
-                <Image src="/images/main-image.jpg" alt="TravelKaro App" fill className="object-cover" />
+                <Image src="/images/screencapture-localhost-3000-2025-05-12-15_47_53.jpg" alt="TravelOfTrust App" fill className="object-cover" />
               </div>
             </motion.div>
           </div>
@@ -534,7 +558,7 @@ export default function Home() {
           >
             <h2 className="text-3xl font-bold mb-4">What Our Clients Says</h2>
             <p className="max-w-2xl mx-auto opacity-90">
-              Hear from our satisfied clients about their experiences with TravelKaro.
+              Hear from our satisfied clients about their experiences with TravelOfTrust.
             </p>
           </motion.div>
 
@@ -548,12 +572,12 @@ export default function Home() {
               {
                 name: "Great Travel",
                 rating: 5,
-                text: "TravelKaro made our family Umrah trip memorable. The attention to detail and personalized service exceeded our expectations.",
+                text: "TravelOfTrust made our family Umrah trip memorable. The attention to detail and personalized service exceeded our expectations.",
               },
               {
                 name: "Best Umrah and Tour",
                 rating: 5,
-                text: "From visa processing to accommodations near the holy sites, everything was perfectly arranged. Will definitely book with TravelKaro again.",
+                text: "From visa processing to accommodations near the holy sites, everything was perfectly arranged. Will definitely book with TravelOfTrust again.",
               },
             ].map((testimonial, index) => (
               <motion.div

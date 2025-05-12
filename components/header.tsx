@@ -46,7 +46,7 @@ export default function Header() {
         <div className="flex items-center justify-between py-4">
           <Link href="/" className="flex items-center">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-              <Image src="/9544552_4206917.jpg" alt="TravelKaro" width={180} height={40} className="h-10 w-auto" />
+              <Image src="/9544552_4206917.jpg" alt="TravelOfTrust" width={180} height={40} className="h-10 w-auto" />
             </motion.div>
           </Link>
 
@@ -80,7 +80,7 @@ export default function Header() {
               href="/contact"
               className="bg-white text-purple-700 px-4 py-2 rounded-md font-medium hover:bg-purple-50 transition duration-300"
             >
-              Enquire
+              Book Now
             </Link>
           </motion.div>
 

@@ -9,10 +9,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="inline-block mb-4">
-              <Image src="/9544552_4206917.jpg" alt="TravelKaro" width={180} height={40} className="h-10 w-auto" />
+              <Image src="/9544552_4206917.jpg" alt="TravelOfTrust" width={180} height={40} className="h-10 w-auto" />
             </Link>
             <p className="text-purple-100 mb-4">
-              TravelKaro is your trusted partner for Umrah journeys, providing seamless travel experiences that are both
+              TravelOfTrust is your trusted partner for Umrah journeys, providing seamless travel experiences that are both
               memorable and spiritually fulfilling.
             </p>
             <div className="flex space-x-4">

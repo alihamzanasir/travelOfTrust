@@ -47,7 +47,7 @@ export default function ServicesPage() {
           >
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Comprehensive Umrah Services</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              At TravelKaro, we offer a wide range of services to ensure your Umrah journey is comfortable, meaningful,
+              At TravelOfTrust, we offer a wide range of services to ensure your Umrah journey is comfortable, meaningful,
               and spiritually fulfilling.
             </p>
           </motion.div>

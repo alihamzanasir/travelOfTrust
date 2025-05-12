@@ -18,7 +18,7 @@ export default function AboutPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/islam-3782623_1280.jpg"
-            alt="About TravelKaro"
+            alt="About TravelOfTrust"
             fill
             className="object-cover brightness-75"
             priority
@@ -33,7 +33,7 @@ export default function AboutPage() {
               transition={{ duration: 0.5 }}
               className="max-w-2xl text-white"
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 mt-10">About TravelKaro</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 mt-10">About TravelOfTrust</h1>
               <p className="text-lg mb-6">Your Trusted Partner for Umrah Journey</p>
             </motion.div>
           </div>
@@ -52,7 +52,7 @@ export default function AboutPage() {
             >
               <Image
                 src="/images/islam-6752293_1280.jpg"
-                alt="About TravelKaro"
+                alt="About TravelOfTrust"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-lg object-cover"
@@ -66,7 +66,7 @@ export default function AboutPage() {
             >
               <h2 className="text-3xl font-bold text-gray-800 mb-6">Our Story</h2>
               <p className="text-gray-600 mb-6">
-                Founded in 2010, TravelKaro has been dedicated to providing exceptional Umrah travel services to
+                Founded in 2010, TravelOfTrust has been dedicated to providing exceptional Umrah travel services to
                 pilgrims from around the world. Our journey began with a simple mission: to make the sacred pilgrimage
                 accessible, comfortable, and spiritually enriching for all Muslims.
               </p>
@@ -108,7 +108,7 @@ export default function AboutPage() {
           >
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Values</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              At TravelKaro, our values guide everything we do. We are committed to providing exceptional service while
+              At TravelOfTrust, our values guide everything we do. We are committed to providing exceptional service while
               upholding the highest standards of integrity and respect.
             </p>
           </motion.div>

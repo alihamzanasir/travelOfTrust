@@ -119,7 +119,6 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-lg font-bold text-gray-800 mb-1">Call Us</h3>
                     <p className="text-gray-600">+92 315 682 00 80</p>
-                    <p className="text-gray-600">+1 (234) 567-8901</p>
                   </div>
                 </div>
 

@@ -9,9 +9,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "TravelKaro - Your Trusted Partner for Umrah Journey",
+  title: "TravelOfTrust - Your Trusted Partner for Umrah Journey",
   description:
-    "TravelKaro provides seamless Umrah travel experiences, ensuring every journey is memorable and spiritually fulfilling.",
+    "TravelOfTrust provides seamless Umrah travel experiences, ensuring every journey is memorable and spiritually fulfilling.",
     generator: 'v0.dev'
 }
 
