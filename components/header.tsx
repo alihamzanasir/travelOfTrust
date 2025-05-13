@@ -114,14 +114,14 @@ export default function Header() {
         >
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-col space-y-4">
-              {["Home", "About Us","Packages", "Services","Contact Us","Careers"].map((item) => (
+              {navItems.map((item) => (
                 <Link
-                  key={item}
-                  href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                  key={item.path}
+                  href={item.path}
                   className="font-medium hover:text-purple-200 transition duration-300 py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item}
+                  {item.title}
                 </Link>
               ))}
               <Link
