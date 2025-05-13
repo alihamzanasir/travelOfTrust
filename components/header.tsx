@@ -11,6 +11,15 @@ import ThemeToggle from "./ThemeToggle"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const navItems = [
+    { title: "Home", path: "/" },
+    { title: "About Us", path: "/about" },
+    { title: "Packages", path: "/packages" },
+    { title: "Services", path: "/services" },
+    { title: "Contact Us", path: "/contact" },
+    { title: "Careers", path: "/careers" },
+  ];
+  
 
   return (
     <header className="bg-purple-700 text-white">
@@ -53,22 +62,23 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {["Home", "About Us","Packages", "Services","Contact Us","Careers"].map((item, index) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <Link
-                  href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                  className="font-medium hover:text-purple-200 transition duration-300"
-                >
-                  {item}
-                </Link>
-              </motion.div>
-            ))}
-          </nav>
+  {navItems.map((item, index) => (
+    <motion.div
+      key={item.title}
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.1 }}
+    >
+      <Link
+        href={item.path}
+        className="font-medium hover:text-purple-200 transition duration-300"
+      >
+        {item.title}
+      </Link>
+    </motion.div>
+  ))}
+</nav>
+
 
           {/* Login Button */}
           <motion.div
