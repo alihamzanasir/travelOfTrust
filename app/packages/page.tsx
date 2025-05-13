@@ -216,7 +216,7 @@ export default function PackagesPage() {
                   <div className="flex justify-between items-center">
                     <span className="text-xl font-bold text-purple-700">{pkg.price}</span>
                     <Link
-                      href={`/packages/${pkg.id}`}
+                      href={`/contact`}
                       className="bg-purple-700 text-white px-4 py-2 rounded-md text-sm hover:bg-purple-800 transition duration-300"
                     >
                       Book Now
