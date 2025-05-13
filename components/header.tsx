@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import { FaPhone, FaWhatsapp } from "react-icons/fa"
 import { HiOutlineMail } from "react-icons/hi"
 import { FiClock, FiMenu, FiX } from "react-icons/fi"
+import ThemeToggle from "./ThemeToggle"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -52,7 +53,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {["Home", "Packages", "Services", "About", "Contact"].map((item, index) => (
+            {["Home", "About Us","Packages", "Services","Contact Us","Careers"].map((item, index) => (
               <motion.div
                 key={item}
                 initial={{ opacity: 0, y: -10 }}
@@ -82,6 +83,7 @@ export default function Header() {
             >
               Book Now
             </Link>
+            {/* <ThemeToggle/> */}
           </motion.div>
 
           {/* Mobile Menu Button */}
@@ -102,7 +104,7 @@ export default function Header() {
         >
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-col space-y-4">
-              {["Home", "Packages", "Services", "About", "Contact"].map((item) => (
+              {["Home", "About Us","Packages", "Services","Contact Us","Careers"].map((item) => (
                 <Link
                   key={item}
                   href={item === "Home" ? "/" : `/${item.toLowerCase()}`}

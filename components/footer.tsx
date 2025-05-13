@@ -12,8 +12,7 @@ export default function Footer() {
               <Image src="/9544552_4206917.jpg" alt="TravelOfTrust" width={180} height={40} className="h-10 w-auto" />
             </Link>
             <p className="text-purple-100 mb-4">
-              TravelOfTrust is your trusted partner for Umrah journeys, providing seamless travel experiences that are both
-              memorable and spiritually fulfilling.
+              At TravelofTrust, we’re your reliable partner in making Umrah journeys smooth, meaningful, and spiritually fulfilling.
             </p>
             <div className="flex space-x-4">
               <Link href="#" className="text-white hover:text-purple-200 transition duration-300">
