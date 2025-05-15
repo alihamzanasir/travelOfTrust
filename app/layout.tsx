@@ -5,28 +5,29 @@ import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
-import { useEffect } from "react"
+
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "TravelOfTrust - Your Trusted Partner for Umrah Journey",
-  description:
-    "TravelOfTrust provides seamless Umrah travel experiences, ensuring every journey is memorable and spiritually fulfilling.",
-    generator: 'v0.dev'
+  description: "TravelOfTrust provides seamless Umrah travel experiences, ensuring every journey is memorable and spiritually fulfilling.",
+  generator: 'v0.dev'
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
+
+  
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html  suppressHydrationWarning={true}>
       <body className={inter.className} suppressHydrationWarning={true}>
-      {/* <ThemeProvider> */}
+        {/* <ThemeProvider> */}
           <Header />
-          {children}
+            {children}
           <Footer />
         {/* </ThemeProvider> */}
       </body>

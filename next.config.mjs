@@ -1,3 +1,9 @@
+// import createNextIntlPlugin from 'next-intl/plugin';
+
+// const withNextIntl = createNextIntlPlugin({
+//   locales: ['en', 'ur'],
+//   defaultLocale: 'en'
+// });
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {

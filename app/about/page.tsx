@@ -66,15 +66,11 @@ export default function AboutPage() {
             >
               <h2 className="text-3xl font-bold text-gray-800 mb-6">Our Story</h2>
               <p className="text-gray-600 mb-6">
-                Founded in 2010, TravelOfTrust has been dedicated to providing exceptional Umrah travel services to
-                pilgrims from around the world. Our journey began with a simple mission: to make the sacred pilgrimage
-                accessible, comfortable, and spiritually enriching for all Muslims.
+              TravelOfTrust started in 2023 with a simple goal: to make the Umrah journey easy, comfortable, and meaningful for every pilgrim. We know how important this trip is, and we want to help you focus on your spiritual experience without worrying about the details.
               </p>
               <p className="text-gray-600 mb-6">
-                Over the years, we have grown to become a trusted name in Umrah travel services, known for our attention
-                to detail, personalized care, and deep understanding of the spiritual significance of the journey. Our
-                team of experienced professionals works tirelessly to ensure that every aspect of your pilgrimage is
-                handled with the utmost care and respect.
+              Since then, we’ve been working hard to offer personalized support and care to everyone who travels with us. Our team is dedicated to handling every part of your Umrah with respect and attention, so you can feel confident and at peace throughout your journey.
+              We believe every pilgrim deserves a smooth and memorable experience, and we’re honored to be part of your sacred journey.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -108,8 +104,7 @@ export default function AboutPage() {
           >
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Values</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              At TravelOfTrust, our values guide everything we do. We are committed to providing exceptional service while
-              upholding the highest standards of integrity and respect.
+            At TravelOfTrust, our values are at the heart of everything we do. We are committed to providing exceptional service with honesty, integrity, and deep respect for every pilgrim. Your trust means everything to us, and we strive to make your journey as smooth and meaningful as possible.
             </p>
           </motion.div>
 
@@ -118,17 +113,17 @@ export default function AboutPage() {
               {
                 title: "Excellence",
                 description:
-                  "We strive for excellence in every aspect of our service, from the initial consultation to the completion of your journey.",
+                  "We are dedicated to excellence in every step of your journey from the very first consultation to the moment you complete your pilgrimage. Our goal is to exceed your expectations and make your experience truly unforgettable.",
               },
               {
                 title: "Integrity",
                 description:
-                  "We conduct our business with the highest level of integrity, ensuring transparency and honesty in all our dealings.",
+                  "We provide our services with honesty and transparency, making sure you always know what to expect. Trust and fairness are the foundation of everything we do.",
               },
               {
                 title: "Respect",
                 description:
-                  "We respect the sacred nature of the Umrah pilgrimage and the diverse needs and backgrounds of our clients.",
+                  "We understand how special the Umrah journey is, and we treat every pilgrim with kindness and care, no matter where they come from.",
               },
               {
                 title: "Compassion",
@@ -143,7 +138,7 @@ export default function AboutPage() {
               {
                 title: "Reliability",
                 description:
-                  "We are committed to being reliable partners, ensuring that all arrangements are made with precision and care.",
+                  "We make sure everything is planned carefully so your trip goes without any problems. You can trust us to be there for you from start to finish.",
               },
             ].map((value, index) => (
               <motion.div
@@ -175,30 +170,29 @@ export default function AboutPage() {
           >
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Team</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Meet the dedicated professionals who work tirelessly to make your Umrah journey memorable and spiritually
-              fulfilling.
+            We’re a team of caring and committed people who work hard behind the scenes to make your Umrah journey smooth, special, and spiritually meaningful. You’re always welcome to talk to us and discuss your travel plans in detail — we’re here to help every step of the way.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {[
               {
-                name: "Ahmed Khan",
+                name: "Visa Expert",
                 position: "Founder & CEO",
                 image:"/images/teampicture/boy-phone-conversation-pic-blazer-7722030_1280.jpg"
               },
               {
-                name: "Fatima Ali",
+                name: "Hotel Manager",
                 position: "Operations Manager",
                 image:"/images/teampicture/entrepreneur-2326419_1280.jpg"
               },
               {
-                name: "Mohammed Rahman",
+                name: "Tickting Expert",
                 position: "Religious Guide",
                 image:"/images/teampicture/man-6554120_1280.jpg"
               },
               {
-                name: "Aisha Patel",
+                name: "Transportation Expert",
                 position: "Customer Relations",
                 image:"/images/teampicture/portrait-8095464_1280.jpg"
               },
@@ -216,7 +210,7 @@ export default function AboutPage() {
                 </div>
                 <div className="p-6 text-center">
                   <h3 className="text-xl font-bold text-gray-800 mb-1">{member.name}</h3>
-                  <p className="text-gray-600">{member.position}</p>
+                  {/* <p className="text-gray-600">{member.position}</p> */}
                 </div>
               </motion.div>
             ))}

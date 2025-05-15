@@ -65,7 +65,7 @@ export default function ServicesPage() {
                 title: "Visa Processing",
                 description:
                   "Hassle-free visa processing services to ensure a smooth entry into Saudi Arabia for your pilgrimage.",
-                   image:"/images/service/passport-3127927_1280.jpg"
+                   image:"/images/teampicture/boy-phone-conversation-pic-blazer-7722030_1280.jpg"
               },
               {
                 title: "Accommodation",
@@ -87,7 +87,7 @@ export default function ServicesPage() {
               {
                 title: "Group Tours",
                 description: "Organized group tours with like-minded pilgrims, led by experienced guides.",
-                 image:"/images/service/studying-5831644_1280.jpg"
+                 image:"/images/WhatsApp Image 2025-05-15 at 3.49.45 PM.jpeg"
               },
             ].map((service, index) => (
               <motion.div

@@ -95,7 +95,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">Contact Information</h3>
             <ul className="space-y-2">
-              <li className="text-purple-100">Street No. 3, Shadab colony Hamza Town, Bahawalpur, Punjab Pakistan.</li>
+              <li className="text-purple-100">Street No. 3, Hamza Town, Bahawalpur, Punjab Pakistan.</li>
               <li className="text-purple-100">Phone: +92 315 682 00 80</li>
               <li className="text-purple-100">Email: traveloftrust25@gmail.com</li>
               <li className="text-purple-100">WhatsApp: +92 315 682 00 80</li>

@@ -3,24 +3,102 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { FaArrowRight, FaCheck, FaMapMarkerAlt, FaStar } from "react-icons/fa";
+import { FaArrowRight, FaCheck, FaStar } from "react-icons/fa";
 import { MdOutlineAreaChart } from "react-icons/md";
 import { GoGoal } from "react-icons/go";
-
-
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 export default function Home() {
-  const [destination, setDestination] = useState("");
-  const [date, setDate] = useState("");
-  const [travelers, setTravelers] = useState("");
-  const [days, setDays] = useState("");
-  const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
+  const initialValues = {
+    name: "",
+    contact: "",
+    destination: "",
+    date: "",
+    travelers: "",
+    days: "",
+  };
+
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+    contact: Yup.string().required("Contact number is required"),
+    destination: Yup.string().required("Travel from is required"),
+    date: Yup.string().required("Travel date is required"),
+    travelers: Yup.number()
+      .required("Number of travelers is required")
+      .typeError("Must be a number"),
+    days: Yup.number()
+      .required("Number of days is required")
+      .typeError("Must be a number"),
+  });
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
+  };
+
+  const handleSubmit = async (
+    values: typeof initialValues,
+    {
+      setSubmitting,
+      resetForm,
+    }: { setSubmitting: (isSubmitting: boolean) => void; resetForm: () => void }
+  ) => {
+    const data = values;
+
+    try {
+      const response: any = await fetch("/api/mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: "atif0081@gmail.com",
+          subject: "New Travel Form Submission",
+          text: "New travel inquiry received",
+          html: `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+              <title>Travel Inquiry</title>
+              <style>
+                body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; color: #333; }
+                .container { max-width: 600px; background: #fff; padding: 20px; margin: auto; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+                h2 { color: #6E1AA4; }
+                p { line-height: 1.6; margin: 10px 0; }
+                .label { font-weight: bold; color: #555; }
+              </style>
+            </head>
+            <body>
+              <div class="container">
+                <h2>New Travel Form Submission</h2>
+                <p><span class="label">Name:</span> ${data.name}</p>
+                <p><span class="label">Contact:</span> ${data.contact}</p>
+                <p><span class="label">City:</span> ${data.destination}</p>
+                <p><span class="label">Date:</span> ${data.date}</p>
+                <p><span class="label">Number of Travelers:</span> ${data.travelers}</p>
+                <p><span class="label">Number of Days:</span> ${data.days}</p>
+              </div>
+            </body>
+            </html>
+          `,
+        }),
+      });
+
+      console.log("Response:", response);
+      if (response?.ok) {
+        alert("Form submitted successfully!");
+        resetForm();
+      } else {
+        alert("Failed to submit the form.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -70,107 +148,167 @@ export default function Home() {
             className="bg-white rounded-lg shadow-lg p-6 -mt-20 relative z-10 max-w-4xl mx-auto"
           >
             <h2 className="text-xl font-bold text-center mb-4 text-purple-700">
-              Quick Enquiry Form
+              Quick Enquiry
             </h2>
-            <form className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {/* Name */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Name<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter your name"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  required
-                />
-              </div>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {({ isSubmitting }) => (
+                <Form className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {/* Name */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Name<span className="text-red-500">*</span>
+                    </label>
+                    <Field
+                      name="name"
+                      type="text"
+                      placeholder="Enter your name"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    />
+                    <ErrorMessage
+                      name="name"
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
 
-              {/* Contact No */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Contact No<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="tel"
-                  value={contact}
-                  onChange={(e) => setContact(e.target.value)}
-                  placeholder="03XX-XXXXXXX"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  required
-                />
-              </div>
+                  {/* Contact No */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Contact No<span className="text-red-500">*</span>
+                    </label>
+                    <Field
+                      name="contact"
+                      type="tel"
+                      placeholder="03XX-XXXXXXX"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    />
+                    <ErrorMessage
+                      name="contact"
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
 
-              {/* Travel From */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Travel From
-                </label>
-                <select
-                  value={destination}
-                  onChange={(e) => setDestination(e.target.value)}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                >
-                  <option value="">Select City</option>
-                  <option value="Islamabad">Islamabad</option>
-                  <option value="Karachi">Karachi</option>
-                  <option value="Lahore">Lahore</option>
-                  <option value="Multan">Multan</option>
-                  <option value="Peshawar">Peshawar</option>
-                  <option value="Quetta">Quetta</option>
-                  <option value="Sialkot">Sialkot</option>
-                </select>
-              </div>
+                  {/* Travel From */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Travel From<span className="text-red-500">*</span>
+                    </label>
+                    <Field
+                      as="select"
+                      name="destination"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    >
+                      <option value="">Select City</option>
+                      <option value="Islamabad">Islamabad</option>
+                      <option value="Karachi">Karachi</option>
+                      <option value="Lahore">Lahore</option>
+                      <option value="Multan">Multan</option>
+                      <option value="Peshawar">Peshawar</option>
+                      <option value="Quetta">Quetta</option>
+                      <option value="Sialkot">Sialkot</option>
+                    </Field>
+                    <ErrorMessage
+                      name="destination"
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
 
-              {/* Travel Date */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Travel Date
-                </label>
-                <input
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-              </div>
+                  {/* Travel Date */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Travel Date<span className="text-red-500">*</span>
+                    </label>
+                    <Field
+                      name="date"
+                      type="date"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    />
+                    <ErrorMessage
+                      name="date"
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
 
-              {/* No. of Travelers */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  No. of Travelers
-                </label>
-                <input
-                  type="number"
-                  value={travelers}
-                  onChange={(e) => setTravelers(e.target.value)}
-                  placeholder="No. of Travelers"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-              </div>
+                  {/* No. of Travelers */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      No. of Travelers<span className="text-red-500">*</span>
+                    </label>
+                    <Field
+                      name="travelers"
+                      type="number"
+                      placeholder="No. of Travelers"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    />
+                    <ErrorMessage
+                      name="travelers"
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
 
-              {/* No. of Days */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  No. of Days
-                </label>
-                <input
-                  type="number"
-                  value={days}
-                  onChange={(e) => setDays(e.target.value)}
-                  placeholder="No. of Days"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-              </div>
-            </form>
+                  {/* No. of Days */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      No. of Days<span className="text-red-500">*</span>
+                    </label>
+                    <Field
+                      name="days"
+                      type="number"
+                      placeholder="No. of Days"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    />
+                    <ErrorMessage
+                      name="days"
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
 
-            <div className="mt-4 text-center">
-              <button style={{fontWeight:"bold"}} className="bg-purple-700 text-white px-6 py-3  rounded-md font-extra hover:bg-purple-800 transition duration-300">
-                Submit Now
-              </button>
-            </div>
+                  {/* Submit Button */}
+                  <div className="md:col-span-3 mt-6">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full p-3 bg-purple-600 text-white rounded-md disabled:opacity-50 flex justify-center items-center"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <svg
+                            className="animate-spin h-5 w-5 mr-2 text-white"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8v8z"
+                            ></path>
+                          </svg>
+                          Submitting...
+                        </>
+                      ) : (
+                        "Submit"
+                      )}
+                    </button>
+                  </div>
+                </Form>
+              )}
+            </Formik>
           </motion.div>
         </div>
       </section>
@@ -187,10 +325,12 @@ export default function Home() {
             className="text-white text-center max-w-4xl mx-auto mb-12"
           >
             <h2 className="text-3xl font-bold mb-4">
-            At TravelOfTrust, we are dedicated to delivering seamless Umrah experiences that are both spiritually fulfilling and truly memorable.
+              At TravelOfTrust, we are dedicated to delivering seamless Umrah
+              experiences that are both spiritually fulfilling and truly
+              memorable.
             </h2>
             <p className="text-lg opacity-90">
-            Where Faithful Journeys Meet Trusted Travel
+              Where Faithful Journeys Meet Trusted Travel
             </p>
           </motion.div>
 
@@ -212,7 +352,11 @@ export default function Home() {
                   </h3>
                 </div>
                 <p className="text-gray-600 mb-6 text-justify flex-grow">
-                At TravelOfTrust, our mission is to provide you with exceptional Umrah travel services that combine spiritual guidance with comfort and care. We are here to support you every step of the way making your sacred journey as smooth, meaningful, and fulfilling as possible. 
+                  At TravelOfTrust, our mission is to provide you with
+                  exceptional Umrah travel services that combine spiritual
+                  guidance with comfort and care. We are here to support you
+                  every step of the way making your sacred journey as smooth,
+                  meaningful, and fulfilling as possible.
                 </p>
                 <Link
                   href="/about"
@@ -238,7 +382,10 @@ export default function Home() {
                   <h3 className="text-xl font-bold text-gray-800">Our Reach</h3>
                 </div>
                 <p className="text-gray-600 mb-6 text-justify flex-grow">
-                At TravelOfTrust, we're more than just a travel service and your trusted partner on a sacred journey. Thanks to our strong and reliable network across Saudi Arabia, we're able to take care of everything you need for your Umrah trip. 
+                  At TravelOfTrust, we're more than just a travel service and
+                  your trusted partner on a sacred journey. Thanks to our strong
+                  and reliable network across Saudi Arabia, we're able to take
+                  care of everything you need for your Umrah trip.
                 </p>
                 <Link
                   href="/services"
@@ -267,7 +414,11 @@ export default function Home() {
               Why Umrah With Us?
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            With TravelofTrust, experience a hassle-free and spiritually rewarding Umrah journey. We take care of all the details, so you can focus on your worship. With comfortable stays, expert guidance, and heartfelt support, we’re here to make your pilgrimage special.
+              With TravelofTrust, experience a hassle-free and spiritually
+              rewarding Umrah journey. We take care of all the details, so you
+              can focus on your worship. With comfortable stays, expert
+              guidance, and heartfelt support, we’re here to make your
+              pilgrimage special.
             </p>
           </motion.div>
 
@@ -283,7 +434,7 @@ export default function Home() {
                 title: "Seamless Experience",
                 description:
                   "With TravelofTrust, your whole journey is taken care of—flights, hotels, transport—all handled smoothly so you can focus on your spiritual experience, not the logistics.",
-                image: "/images/ca7d065c36040a7c0cf2094e0ee82ce0",
+                image: "/images/WhatsApp Image 2025-05-15 at 3.49.45 PM.jpeg",
               },
               {
                 title: "Personalized Care",
@@ -307,26 +458,23 @@ export default function Home() {
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 group"
               >
                 <div className="flex flex-col justify-between h-full">
-                <div className="h-48 w-full relative overflow-hidden">
-                  
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    {item.description}
-                  </p>
+                  <div className="h-48 w-full relative overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm">{item.description}</p>
                   </div>
                   <Link
                     href="/services"
-                    style={{paddingTop:"0px"}}
+                    style={{ paddingTop: "0px" }}
                     className="text-purple-700 p-6 font-medium text-sm hover:text-purple-900 transition duration-200"
                   >
                     Learn More{" "}
@@ -362,24 +510,27 @@ export default function Home() {
               </span>
             </div>
             <p className="text-gray-600 max-w-2xl mx-auto">
-            Our Muharram Ul Haram Umrah packages are thoughtfully designed to offer comfort, convenience, and deep spiritual fulfillment. Let TravelofTrust take care of everything—so you can focus on what truly matters.
+              Our Muharram Ul Haram Umrah packages are thoughtfully designed to
+              offer comfort, convenience, and deep spiritual fulfillment. Let
+              TravelofTrust take care of everything—so you can focus on what
+              truly matters.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {[
-                {
-                  title: "Economy Package",
-                  features: [
-                    "15 Days",
-                    "Accommodation",
-                    "Transportation",
-                    "Visa Processing",
-                    "Return Air Ticket"
-                  ],
-                  price: "PKR. 219,000/Person",
-                  image: "/images/mekkah-2358306_1280.jpg",
-                },
+              {
+                title: "Economy Package",
+                features: [
+                  "15 Days",
+                  "Accommodation",
+                  "Transportation",
+                  "Visa Processing",
+                  "Return Air Ticket",
+                ],
+                price: "PKR. 219,000/Person",
+                image: "/images/mekkah-2358306_1280.jpg",
+              },
               {
                 title: "Standard Package",
                 features: [
@@ -387,7 +538,7 @@ export default function Home() {
                   "Accommodation",
                   "Transportation",
                   "Visa Processing",
-                  "Return Air Ticket"
+                  "Return Air Ticket",
                 ],
                 price: "PKR. 259,000/Person",
                 image: "/images/islam-3782623_1280.jpg",
@@ -399,12 +550,11 @@ export default function Home() {
                   "Accommodation",
                   "Transportation",
                   "Visa Processing",
-                  "Return Air Ticket"
+                  "Return Air Ticket",
                 ],
                 price: "PKR. 279,000/Person",
                 image: "/images/islam-6752293_1280.jpg",
               },
-            
             ].map((pkg, index) => (
               <motion.div
                 key={index}
@@ -439,7 +589,7 @@ export default function Home() {
                       {pkg.price}
                     </span>
                     <Link
-                    style={{fontWeight:"bold"}}
+                      style={{ fontWeight: "bold" }}
                       href="/packages"
                       className="bg-purple-700 text-white  px-4 py-2 rounded-md text-sm hover:bg-purple-800 transition duration-300"
                     >

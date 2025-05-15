@@ -1,51 +1,73 @@
 "use client"
 
 import type React from "react"
-
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { useState } from "react"
 import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaWhatsapp } from "react-icons/fa"
+import { useFormik } from "formik"
+import * as Yup from "yup"
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  })
-
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      contact: "",
+      destination: "",
+      date: "",
+      travelers: "",
+      days: "",
+    },
+    validationSchema: Yup.object().shape({
+      name: Yup.string().required("Name is required"),
+      contact: Yup.string().required("Contact number is required"),
+      destination: Yup.string().required("Travel from is required"),
+      date: Yup.string().required("Travel date is required"),
+      travelers: Yup.number().required("Number of travelers is required").typeError("Must be a number"),
+      days: Yup.number().required("Number of days is required").typeError("Must be a number"),
+    }),
+    onSubmit: async (values, { resetForm, setSubmitting }) => {
+      try {
+        const response = await fetch("/api/mail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            to: "atif0081@gmail.com",
+            subject: "New Travel Form Submission",
+            text: "New travel inquiry received",
+            html: `
+              <html>
+                <body>
+                  <h2>New Travel Form Submission</h2>
+                  <p><strong>Name:</strong> ${values.name}</p>
+                  <p><strong>Contact:</strong> ${values.contact}</p>
+                  <p><strong>City:</strong> ${values.destination}</p>
+                  <p><strong>Date:</strong> ${values.date}</p>
+                  <p><strong>Number of Travelers:</strong> ${values.travelers}</p>
+                  <p><strong>Number of Days:</strong> ${values.days}</p>
+                </body>
+              </html>
+            `,
+          }),
+        })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-      })
-
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false)
-      }, 5000)
-    }, 1500)
-  }
+        if (response.ok) {
+          setIsSubmitted(true)
+          resetForm()
+        } else {
+          alert("Failed to submit the form.")
+        }
+      } catch (error) {
+        console.error("Error:", error)
+      } finally {
+        setSubmitting(false)
+      }
+    },
+  })
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -75,10 +97,11 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Information */}
+      {/* Contact Info */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* Info */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -87,53 +110,17 @@ export default function ContactPage() {
             >
               <h2 className="text-3xl font-bold text-gray-800 mb-6">Get in Touch</h2>
               <p className="text-gray-600 mb-8">
-                Have questions about our Umrah packages or services? Our team is here to help. Fill out the form, and
-                we'll get back to you as soon as possible.
+                Have questions about our Umrah packages or services? Fill out the form, and we'll get back to you.
               </p>
-
               <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="bg-purple-700 text-white p-3 rounded-full mr-4">
-                    <FaMapMarkerAlt size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-1">Our Location</h3>
-                    <p className="text-gray-600">Street No. 3, Shadab colony Hamza Town, Bahawalpur, Punjab Pakistan.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-purple-700 text-white p-3 rounded-full mr-4">
-                    <FaEnvelope size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-1">Email Us</h3>
-                    <p className="text-gray-600">traveloftrust25@gmail.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-purple-700 text-white p-3 rounded-full mr-4">
-                    <FaPhone size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-1">Call Us</h3>
-                    <p className="text-gray-600">+92 315 682 00 80</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-purple-700 text-white p-3 rounded-full mr-4">
-                    <FaWhatsapp size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-1">WhatsApp</h3>
-                    <p className="text-gray-600">+92 315 682 00 80</p>
-                  </div>
-                </div>
+                <ContactDetail icon={<FaMapMarkerAlt />} title="Our Location" content="Street No. 3, Hamza Town, Bahawalpur, Punjab Pakistan." />
+                <ContactDetail icon={<FaEnvelope />} title="Email Us" content="traveloftrust25@gmail.com" />
+                <ContactDetail icon={<FaPhone />} title="Call Us" content="+92 315 682 00 80" />
+                <ContactDetail icon={<FaWhatsapp />} title="WhatsApp" content="+92 315 682 00 80" />
               </div>
             </motion.div>
 
+            {/* Form */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -143,100 +130,56 @@ export default function ContactPage() {
             >
               <h2 className="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
 
-              {isSubmitted ? (
+              {isSubmitted && (
                 <div className="bg-green-100 text-green-800 p-4 rounded-md mb-6">
-                  Thank you for your message! We'll get back to you soon.
+                  Thank you! We’ll contact you soon.
                 </div>
-              ) : null}
+              )}
 
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={formik.handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <label htmlFor="name" className="block text-gray-700 mb-2">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-gray-700 mb-2">
-                      Your Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      required
-                    />
-                  </div>
+                  <InputField id="name" label="Name" placeholder="Enter your name" formik={formik} />
+                  <InputField id="contact" label="Contact No" placeholder="03XX-XXXXXXX" formik={formik} />
+                </div>
+
+                <div className="mb-4">
+                  <label htmlFor="destination" className="block text-gray-700 mb-2">
+                    Travel From<span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="destination"
+                    {...formik.getFieldProps("destination")}
+                    className="w-full p-3 border border-gray-300 rounded-md"
+                  >
+                    <option value="">Select City</option>
+                    <option value="Islamabad">Islamabad</option>
+                    <option value="Karachi">Karachi</option>
+                    <option value="Lahore">Lahore</option>
+                    <option value="Multan">Multan</option>
+                    <option value="Peshawar">Peshawar</option>
+                    <option value="Quetta">Quetta</option>
+                    <option value="Sialkot">Sialkot</option>
+                  </select>
+                  {formik.touched.destination && formik.errors.destination && (
+                    <p className="text-red-500 text-sm">{formik.errors.destination}</p>
+                  )}
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <label htmlFor="phone" className="block text-gray-700 mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="subject" className="block text-gray-700 mb-2">
-                      Subject
-                    </label>
-                    <select
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      required
-                    >
-                      <option value="">Select Subject</option>
-                      <option value="umrah">Umrah Packages</option>
-                      <option value="custom">Custom Package</option>
-                      <option value="visa">Visa Inquiry</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
+                  <InputField id="date" label="Travel Date" type="date" formik={formik} />
+                  <InputField id="travelers" label="Number of Travelers" placeholder="No. of Travelers" type="number" formik={formik} />
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="message" className="block text-gray-700 mb-2">
-                    Your Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={5}
-                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                    required
-                  ></textarea>
+                  <InputField id="days" label="Number of Days"  placeholder="No. of Days" type="number" formik={formik} />
                 </div>
 
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full bg-purple-700 text-white px-6 py-3 rounded-md font-medium hover:bg-purple-800 transition duration-300 flex items-center justify-center ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
+                  disabled={formik.isSubmitting}
+                  className="bg-purple-700 text-white px-6 py-3 rounded-md hover:bg-purple-800 transition"
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  Submit
                 </button>
               </form>
             </motion.div>
@@ -323,5 +266,51 @@ export default function ContactPage() {
         </div>
       </section>
     </main>
+  )
+}
+
+// Contact detail block
+function ContactDetail({ icon, title, content }: { icon: React.ReactNode; title: string; content: string }) {
+  return (
+    <div className="flex items-start">
+      <div className="bg-purple-700 text-white p-3 rounded-full mr-4">{icon}</div>
+      <div>
+        <h3 className="text-lg font-bold text-gray-800 mb-1">{title}</h3>
+        <p className="text-gray-600">{content}</p>
+      </div>
+    </div>
+  )
+}
+
+// Input field block
+function InputField({
+  id,
+  label,
+  placeholder = "",
+  type = "text",
+  formik,
+}: {
+  id: string
+  label: string
+  placeholder?: string
+  type?: string
+  formik: any
+}) {
+  return (
+    <div>
+      <label htmlFor={id} className="block text-gray-700 mb-2">
+        {label} <span className="text-red-500">*</span>
+      </label>
+      <input
+        id={id}
+        type={type}
+        placeholder={placeholder}
+        {...formik.getFieldProps(id)}
+        className="w-full p-3 border border-gray-300 rounded-md"
+      />
+      {formik.touched[id] && formik.errors[id] && (
+        <p className="text-red-500 text-sm">{formik.errors[id]}</p>
+      )}
+    </div>
   )
 }
