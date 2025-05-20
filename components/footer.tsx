@@ -9,7 +9,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="inline-block mb-4">
-              <Image src="/9544552_4206917.jpg" alt="TravelOfTrust" width={180} height={40} className="h-10 w-auto" />
+             <Image src="/logo.png" alt="TravelOfTrust" width={180} height={40} className="h-10 w-auto m-auto" />
+                          <div style={{fontFamily:"Roboto Mono"}} className="text-[10px] font-semibold">Travel Of Trust</div>
             </Link>
             <p className="text-purple-100 mb-4">
               At TravelofTrust, we’re your reliable partner in making Umrah journeys smooth, meaningful, and spiritually fulfilling.
@@ -96,9 +97,9 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-4">Contact Information</h3>
             <ul className="space-y-2">
               <li className="text-purple-100">Street No. 3, Hamza Town, Bahawalpur, Punjab Pakistan.</li>
-              <li className="text-purple-100">Phone: +92 315 682 00 80</li>
+              <li className="text-purple-100">Phone: +92 311 690 36 41</li>
               <li className="text-purple-100">Email: traveloftrust25@gmail.com</li>
-              <li className="text-purple-100">WhatsApp: +92 315 682 00 80</li>
+              <li className="text-purple-100">WhatsApp: +92 311 690 36 41</li>
             </ul>
           </div>
         </div>

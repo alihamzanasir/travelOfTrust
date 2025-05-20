@@ -31,7 +31,7 @@ export default function Header() {
             <div className="flex items-center space-x-4 mb-2 md:mb-0">
               <div className="flex items-center text-sm">
                 <FaPhone className="mr-2" size={14} />
-                <span>+92 315 682 00 80</span>
+                <span>+92 311 690 36 41</span>
               </div>
               <div className="flex items-center text-sm">
                 <HiOutlineMail className="mr-2" size={14} />
@@ -45,7 +45,7 @@ export default function Header() {
               </div>
               <div className="flex items-center text-sm">
                 <FaWhatsapp className="mr-2" size={14} />
-                <span>WhatsApp: +92 315 682 00 80</span>
+                <span>WhatsApp: +92 311 690 36 41</span>
               </div>
             </div>
           </div>
@@ -57,7 +57,8 @@ export default function Header() {
         <div className="flex items-center justify-between py-4">
           <Link href="/" className="flex items-center">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-              <Image src="/9544552_4206917.jpg" alt="TravelOfTrust" width={180} height={40} className="h-10 w-auto" />
+              <Image src="/logo.png" alt="TravelOfTrust" width={180} height={40} className="h-10 w-auto m-auto" />
+              <div style={{fontFamily:"Roboto Mono"}} className="text-[10px] font-semibold">Travel Of Trust</div>
             </motion.div>
           </Link>
 
