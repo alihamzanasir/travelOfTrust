@@ -17,7 +17,7 @@ const colors = [
 
 export default function ThemeSwitcher() {
   const [open, setOpen] = useState(false);
-  const [selectedColor, setSelectedColor] = useState<string | null>("Sky Blue");
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
