@@ -106,7 +106,7 @@ export default function ServicesPage() {
                   <p className="text-gray-600 mb-4">{service.description}</p>
                   <Link
                     href="/contact"
-                    className="text-purple-700 inline-flex items-center text-sm hover:text-purple-900 transition duration-300"
+                    className="text-primary inline-flex items-center text-sm hover:text-primary transition duration-300"
                   >
                     Learn More <FaArrowRight className="ml-1" size={12} />
                   </Link>
@@ -182,7 +182,7 @@ export default function ServicesPage() {
               </ul>
               <Link
                 href="/contact"
-                className="bg-purple-700 text-white px-6 py-3 rounded-md font-medium hover:bg-purple-800 transition duration-300 inline-flex items-center"
+                className="bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-primary transition duration-300 inline-flex items-center"
               >
                 Inquire Now <FaArrowRight className="ml-2" />
               </Link>
@@ -242,7 +242,7 @@ export default function ServicesPage() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="text-center"
                 >
-                  <div className="w-16 h-16 bg-purple-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                  <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                     {process.step}
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3">{process.title}</h3>
@@ -252,10 +252,10 @@ export default function ServicesPage() {
             </div>
 
             <div className="hidden md:flex justify-center mt-8">
-              <div className="w-3/4 h-1 bg-purple-200 relative">
-                <div className="absolute left-1/4 -translate-x-1/2 top-1/2 -translate-y-1/2 w-3 h-3 bg-purple-700 rounded-full"></div>
-                <div className="absolute left-2/4 -translate-x-1/2 top-1/2 -translate-y-1/2 w-3 h-3 bg-purple-700 rounded-full"></div>
-                <div className="absolute left-3/4 -translate-x-1/2 top-1/2 -translate-y-1/2 w-3 h-3 bg-purple-700 rounded-full"></div>
+              <div className="w-3/4 h-1 bg-primary relative">
+                <div className="absolute left-1/4 -translate-x-1/2 top-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full"></div>
+                <div className="absolute left-2/4 -translate-x-1/2 top-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full"></div>
+                <div className="absolute left-3/4 -translate-x-1/2 top-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full"></div>
               </div>
             </div>
           </div>
@@ -263,7 +263,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Additional Services */}
-      <section className="py-16 bg-purple-700">
+      <section className="py-16 bg-primary">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -323,7 +323,7 @@ export default function ServicesPage() {
                 <p className="text-gray-600 mb-4">{service.description}</p>
                 <Link
                   href="/contact"
-                  className="text-purple-700 inline-flex items-center text-sm hover:text-purple-900 transition duration-300"
+                  className="text-primary inline-flex items-center text-sm hover:text-primary transition duration-300"
                 >
                   Learn More <FaArrowRight className="ml-1" size={12} />
                 </Link>
@@ -351,13 +351,13 @@ export default function ServicesPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   href="/contact"
-                  className="bg-purple-700 text-white px-8 py-3 rounded-md font-medium hover:bg-purple-800 transition duration-300 inline-flex items-center justify-center"
+                  className="bg-primary text-white px-8 py-3 rounded-md font-medium hover:bg-primary transition duration-300 inline-flex items-center justify-center"
                 >
                   Contact Us <FaArrowRight className="ml-2" />
                 </Link>
                 <Link
                   href="/packages"
-                  className="border border-purple-700 text-purple-700 px-8 py-3 rounded-md font-medium hover:bg-purple-50 transition duration-300 inline-flex items-center justify-center"
+                  className="border border-primary text-primary px-8 py-3 rounded-md font-medium hover:bg-purple-50 transition duration-300 inline-flex items-center justify-center"
                 >
                   View Packages
                 </Link>

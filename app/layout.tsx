@@ -4,7 +4,8 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
-import { ThemeProvider } from "@/components/theme-provider"
+// import { ThemeProvider } from "@/components/theme-provider"
+import ThemeHydrationWrapper from "@/components/ThemeHydrationWrapper"
 
 
 const inter = Inter({ subsets: ["latin"] })
@@ -20,15 +21,17 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
-  
   return (
     <html  suppressHydrationWarning={true}>
       <body className={inter.className} suppressHydrationWarning={true}>
+
+
         {/* <ThemeProvider> */}
+         <ThemeHydrationWrapper>
           <Header />
             {children}
           <Footer />
+          </ThemeHydrationWrapper>
         {/* </ThemeProvider> */}
       </body>
     </html>

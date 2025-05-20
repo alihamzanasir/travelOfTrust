@@ -129,7 +129,7 @@ export default function Home() {
               <p className="text-lg mb-6">Journeying In Faith</p>
               <Link
                 href="/packages"
-                className="bg-white text-purple-700 px-6 py-3 rounded-md font-medium hover:bg-purple-50 transition duration-300 inline-flex items-center"
+                className="bg-white text-primary px-6 py-3 rounded-md font-medium hover:bg-purple-50 transition duration-300 inline-flex items-center"
               >
                 Explore Now <FaArrowRight className="ml-2" />
               </Link>
@@ -147,7 +147,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="bg-white rounded-lg shadow-lg p-6 -mt-20 relative z-10 max-w-4xl mx-auto"
           >
-            <h2 className="text-xl font-bold text-center mb-4 text-purple-700">
+            <h2 className="text-xl font-bold text-center mb-4 text-primary">
               Quick Enquiry
             </h2>
             <Formik
@@ -166,12 +166,12 @@ export default function Home() {
                       name="name"
                       type="text"
                       placeholder="Enter your name"
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                     <ErrorMessage
                       name="name"
                       component="div"
-                      className="text-red-500 text-sm mt-1"
+                      className="text-primary text-sm mt-1"
                     />
                   </div>
 
@@ -184,12 +184,12 @@ export default function Home() {
                       name="contact"
                       type="tel"
                       placeholder="03XX-XXXXXXX"
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                     <ErrorMessage
                       name="contact"
                       component="div"
-                      className="text-red-500 text-sm mt-1"
+                      className="text-primary text-sm mt-1"
                     />
                   </div>
 
@@ -201,7 +201,7 @@ export default function Home() {
                     <Field
                       as="select"
                       name="destination"
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Select City</option>
                       <option value="Islamabad">Islamabad</option>
@@ -215,7 +215,7 @@ export default function Home() {
                     <ErrorMessage
                       name="destination"
                       component="div"
-                      className="text-red-500 text-sm mt-1"
+                      className="text-primary text-sm mt-1"
                     />
                   </div>
 
@@ -227,12 +227,12 @@ export default function Home() {
                     <Field
                       name="date"
                       type="date"
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                     <ErrorMessage
                       name="date"
                       component="div"
-                      className="text-red-500 text-sm mt-1"
+                      className="text-primary text-sm mt-1"
                     />
                   </div>
 
@@ -245,12 +245,12 @@ export default function Home() {
                       name="travelers"
                       type="number"
                       placeholder="No. of Travelers"
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                     <ErrorMessage
                       name="travelers"
                       component="div"
-                      className="text-red-500 text-sm mt-1"
+                      className="text-primary text-sm mt-1"
                     />
                   </div>
 
@@ -263,12 +263,12 @@ export default function Home() {
                       name="days"
                       type="number"
                       placeholder="No. of Days"
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                     <ErrorMessage
                       name="days"
                       component="div"
-                      className="text-red-500 text-sm mt-1"
+                      className="text-primary text-sm mt-1"
                     />
                   </div>
 
@@ -277,7 +277,7 @@ export default function Home() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full p-3 bg-purple-600 text-white rounded-md disabled:opacity-50 flex justify-center items-center"
+                      className="w-full p-3 bg-primary text-white rounded-md disabled:opacity-50 flex justify-center items-center"
                     >
                       {isSubmitting ? (
                         <>
@@ -314,7 +314,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 bg-gradient-to-b from-purple-700 to-purple-800">
+      <section className="py-16 bg-gradient-to-b from-primary to-primary">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -344,7 +344,7 @@ export default function Home() {
             >
               <div className="flex flex-col h-full">
                 <div className="mb-4">
-                  <div className="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                  <div className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
                     <GoGoal size={20} />
                   </div>
                   <h3 className="text-xl font-bold text-gray-800">
@@ -360,7 +360,7 @@ export default function Home() {
                 </p>
                 <Link
                   href="/about"
-                  className="bg-purple-700 text-white px-4 py-2 rounded-md inline-flex items-center text-sm hover:bg-purple-800 transition duration-300 self-start"
+                  className="bg-primary text-white px-4 py-2 rounded-md inline-flex items-center text-sm hover:bg-primary transition duration-300 self-start"
                 >
                   Read More <FaArrowRight className="ml-2" />
                 </Link>
@@ -376,7 +376,7 @@ export default function Home() {
             >
               <div className="flex flex-col h-full">
                 <div className="mb-4">
-                  <div className="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                  <div className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
                     <MdOutlineAreaChart size={20} />
                   </div>
                   <h3 className="text-xl font-bold text-gray-800">Our Reach</h3>
@@ -389,7 +389,7 @@ export default function Home() {
                 </p>
                 <Link
                   href="/services"
-                  className="bg-purple-700 text-white px-4 py-2 rounded-md inline-flex items-center text-sm hover:bg-purple-800 transition duration-300 self-start"
+                  className="bg-primary text-white px-4 py-2 rounded-md inline-flex items-center text-sm hover:bg-primary transition duration-300 self-start"
                 >
                   Read More <FaArrowRight className="ml-2" />
                 </Link>
@@ -475,7 +475,7 @@ export default function Home() {
                   <Link
                     href="/services"
                     style={{ paddingTop: "0px" }}
-                    className="text-purple-700 p-6 font-medium text-sm hover:text-purple-900 transition duration-200"
+                    className="text-primary p-6 font-medium text-sm hover:text-primary transition duration-200"
                   >
                     Learn More{" "}
                     <FaArrowRight className="inline ml-1" size={12} />
@@ -505,7 +505,7 @@ export default function Home() {
               <span className="text-xl font-bold text-gray-800">
                 Muharram ul Haram 1447
               </span>
-              <span className="bg-purple-700 text-white px-3 py-1 rounded-md text-sm">
+              <span className="bg-primary text-white px-3 py-1 rounded-md text-sm">
                 is Open
               </span>
             </div>
@@ -585,13 +585,13 @@ export default function Home() {
                     ))}
                   </ul>
                   <div className="flex justify-between items-center">
-                    <span className="text-xl font-bold text-purple-700">
+                    <span className="text-xl font-bold text-primary">
                       {pkg.price}
                     </span>
                     <Link
                       style={{ fontWeight: "bold" }}
                       href="/packages"
-                      className="bg-purple-700 text-white  px-4 py-2 rounded-md text-sm hover:bg-purple-800 transition duration-300"
+                      className="bg-primary text-white  px-4 py-2 rounded-md text-sm hover:bg-primary transition duration-300"
                     >
                       Book Now
                     </Link>
@@ -634,7 +634,7 @@ export default function Home() {
       </section>
 
       {/* App Promo Section */}
-      <section className="py-16 bg-purple-700 relative overflow-hidden">
+      <section className="py-16 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-white"></div>
           <div className="absolute bottom-20 right-20 w-32 h-32 rounded-full bg-white"></div>
@@ -715,7 +715,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-purple-700 rounded-lg overflow-hidden shadow-lg"
+              className="bg-primary rounded-lg overflow-hidden shadow-lg"
             >
               <div className="p-6 text-white">
                 <h3 className="text-2xl font-bold mb-4">Dubai Packages</h3>
@@ -821,7 +821,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 bg-purple-700">
+      <section className="py-16 bg-primary">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -878,7 +878,7 @@ export default function Home() {
                   <p className="text-gray-600 mb-6 flex-grow">
                     "{testimonial.text}"
                   </p>
-                  <button className="text-purple-700 inline-flex items-center text-sm hover:text-purple-900 transition duration-300 self-start">
+                  <button className="text-primary inline-flex items-center text-sm hover:text-primary transition duration-300 self-start">
                     Read More <FaArrowRight className="ml-1" size={12} />
                   </button>
                 </div>

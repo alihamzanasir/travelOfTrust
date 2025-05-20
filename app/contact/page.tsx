@@ -177,7 +177,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={formik.isSubmitting}
-                  className="bg-purple-700 text-white px-6 py-3 rounded-md hover:bg-purple-800 transition"
+                  className="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary transition"
                 >
                   Submit
                 </button>
@@ -273,7 +273,7 @@ export default function ContactPage() {
 function ContactDetail({ icon, title, content }: { icon: React.ReactNode; title: string; content: string }) {
   return (
     <div className="flex items-start">
-      <div className="bg-purple-700 text-white p-3 rounded-full mr-4">{icon}</div>
+      <div className="bg-primary text-white p-3 rounded-full mr-4">{icon}</div>
       <div>
         <h3 className="text-lg font-bold text-gray-800 mb-1">{title}</h3>
         <p className="text-gray-600">{content}</p>

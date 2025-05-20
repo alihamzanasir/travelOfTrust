@@ -75,13 +75,13 @@ export default function AboutPage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/services"
-                  className="bg-purple-700 text-white px-6 py-3 rounded-md font-medium hover:bg-purple-800 transition duration-300 inline-flex items-center justify-center"
+                  className="bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-primary transition duration-300 inline-flex items-center justify-center"
                 >
                   Our Services <FaArrowRight className="ml-2" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="border border-purple-700 text-purple-700 px-6 py-3 rounded-md font-medium hover:bg-purple-50 transition duration-300 inline-flex items-center justify-center"
+                  className="border border-primary text-primary px-6 py-3 rounded-md font-medium hover:bg-purple-50 transition duration-300 inline-flex items-center justify-center"
                 >
                   Contact Us
                 </Link>
@@ -219,7 +219,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-purple-700">
+      <section className="py-16 bg-primary">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center text-white">
             <motion.div
@@ -235,7 +235,7 @@ export default function AboutPage() {
               </p>
               <Link
                 href="/contact"
-                className="bg-white text-purple-700 px-8 py-3 rounded-md font-medium hover:bg-purple-50 transition duration-300 inline-flex items-center"
+                className="bg-white text-primary px-8 py-3 rounded-md font-medium hover:bg-purple-50 transition duration-300 inline-flex items-center"
               >
                 Contact Us <FaArrowRight className="ml-2" />
               </Link>

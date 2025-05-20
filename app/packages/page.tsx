@@ -207,7 +207,7 @@ export default function PackagesPage() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute top-0 right-0 bg-purple-700 text-white px-3 py-1 m-2 rounded-md text-sm font-medium">
+                  <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 m-2 rounded-md text-sm font-medium">
                     {pkg.duration}
                   </div>
                 </div>
@@ -239,7 +239,7 @@ export default function PackagesPage() {
                     ))}
                   </ul>
                   <div className="flex justify-between items-center">
-                    <div className="text-sm text-purple-700">
+                    <div className="text-sm text-primary">
                       PKR.{" "}
                       <span className="text-xl font-semibold">
                         {pkg.price.toLocaleString()}
@@ -248,7 +248,7 @@ export default function PackagesPage() {
                     </div>
                     <Link
                       href={`/contact`}
-                      className="bg-purple-700 text-white text-nowrap px-4 py-2 rounded-md text-sm hover:bg-purple-800 transition duration-300"
+                      className="bg-primary text-white text-nowrap px-4 py-2 rounded-md text-sm hover:bg-primary transition duration-300"
                     >
                       Book Now
                     </Link>
@@ -300,7 +300,7 @@ export default function PackagesPage() {
                   </ul>
                   <Link
                     href="/contact"
-                    className="bg-purple-700 text-white px-6 py-3 rounded-md font-medium hover:bg-purple-800 transition duration-300 inline-flex items-center"
+                    className="bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-primary transition duration-300 inline-flex items-center"
                   >
                     Request Custom Package <FaArrowRight className="ml-2" />
                   </Link>
@@ -388,7 +388,7 @@ export default function PackagesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-purple-700">
+      <section className="py-16 bg-primary">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center text-white">
             <motion.div
@@ -407,13 +407,13 @@ export default function PackagesPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   href="/contact"
-                  className="bg-white text-purple-700 px-8 py-3 rounded-md font-medium hover:bg-purple-50 transition duration-300 inline-flex items-center justify-center"
+                  className="bg-white text-primary px-8 py-3 rounded-md font-medium hover:bg-purple-50 transition duration-300 inline-flex items-center justify-center"
                 >
                   Contact Us <FaArrowRight className="ml-2" />
                 </Link>
                 <Link
                   href="/services"
-                  className="border border-white text-white px-8 py-3 rounded-md font-medium hover:bg-purple-800 transition duration-300 inline-flex items-center justify-center"
+                  className="border border-white text-white px-8 py-3 rounded-md font-medium hover:bg-primary transition duration-300 inline-flex items-center justify-center"
                 >
                   Our Services
                 </Link>

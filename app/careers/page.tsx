@@ -14,7 +14,7 @@ export default function CareersPage() {
         </p>
         <Link
           href="/contact"
-          className="inline-block bg-[#7E22CE] font-bold text-[#FFFFFF] px-6 py-3 rounded hover:bg-[#551291] transition duration-300"
+          className="inline-block bg-primary font-bold text-[#FFFFFF] px-6 py-3 rounded hover:bg-primary transition duration-300"
         >
           Contact Us
         </Link>

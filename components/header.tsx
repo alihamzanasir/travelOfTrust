@@ -8,6 +8,7 @@ import { FaPhone, FaWhatsapp } from "react-icons/fa"
 import { HiOutlineMail } from "react-icons/hi"
 import { FiClock, FiMenu, FiX } from "react-icons/fi"
 import { usePathname } from "next/navigation"
+import ThemeSwitcher from "./ThemeSwitcher"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -23,9 +24,9 @@ export default function Header() {
   ]
 
   return (
-    <header className="bg-purple-700 text-white">
+    <header className="bg-primary text-white">
       {/* Top Bar */}
-      <div className="border-b border-purple-600">
+      <div className="border-b border-primary">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between py-2">
             <div className="flex items-center space-x-4 mb-2 md:mb-0">
@@ -76,7 +77,7 @@ export default function Header() {
                   <Link
                     href={item.path}
                     style={{ fontWeight: isActive ? "bolder" : "normal" }}
-                    className={`font-medium hover:text-purple-200 transition duration-300 ${
+                    className={`font-medium transition duration-300 ${
                       isActive ? "font-bold" : ""
                     }`}
                   >
@@ -94,12 +95,17 @@ export default function Header() {
             transition={{ duration: 0.5 }}
             className="hidden md:block"
           >
+            <div className="flex gap-4">
+            <ThemeSwitcher />
             <Link
               href="/contact"
-              className="bg-white text-purple-700 px-4 py-2 rounded-md font-medium hover:bg-purple-50 transition duration-300"
+              className="bg-white text-primary px-4 py-2 rounded-[8px] font-medium hover:bg-purple-50 transition duration-300"
             >
               Book Now
             </Link>
+           
+
+            </div>
           </motion.div>
 
           {/* Mobile Menu Button */}
@@ -116,7 +122,7 @@ export default function Header() {
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden bg-purple-800"
+          className="md:hidden bg-primary"
         >
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-col space-y-4">
@@ -134,13 +140,15 @@ export default function Header() {
                   </Link>
                 )
               })}
+                <ThemeSwitcher />
               <Link
                 href="/contact"
-                className="bg-white text-purple-700 px-4 py-2 rounded-md font-medium hover:bg-purple-50 transition duration-300 inline-block text-center"
+                className="bg-white text-primary px-4 py-2 rounded-md font-medium hover:bg-purple-50 transition duration-300 inline-block text-center"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Enquire
+                Book Now
               </Link>
+            
             </nav>
           </div>
         </motion.div>

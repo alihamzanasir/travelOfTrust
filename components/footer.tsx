@@ -4,7 +4,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaWhatsapp } from "react-icons/fa"
 
 export default function Footer() {
   return (
-    <footer className="bg-purple-700 text-white">
+    <footer className="bg-primary text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -104,7 +104,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-purple-600 mt-8 pt-8 text-center text-purple-100">
+        <div className="border-t border-primary mt-8 pt-8 text-center text-purple-100">
           <p>&copy; {new Date().getFullYear()} TravelOfTrust. All rights reserved.</p>
         </div>
       </div>
