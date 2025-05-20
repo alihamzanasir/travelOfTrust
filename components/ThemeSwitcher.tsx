@@ -17,7 +17,7 @@ const colors = [
 
 export default function ThemeSwitcher() {
   const [open, setOpen] = useState(false);
-  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+  const [selectedColor, setSelectedColor] = useState<string | null>("Mountain Purple");
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
