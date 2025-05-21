@@ -19,6 +19,7 @@ export default function ContactPage() {
       date: "",
       travelers: "",
       days: "",
+      message: ""
     },
     validationSchema: Yup.object().shape({
       name: Yup.string().required("Name is required"),
@@ -27,14 +28,13 @@ export default function ContactPage() {
       date: Yup.string().required("Travel date is required"),
       travelers: Yup.number().required("Number of travelers is required").typeError("Must be a number"),
       days: Yup.number().required("Number of days is required").typeError("Must be a number"),
+      message: Yup.string().required("Message is required")
     }),
     onSubmit: async (values, { resetForm, setSubmitting }) => {
       try {
         const response = await fetch("/api/mail", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             to: "atif0081@gmail.com",
             subject: "New Travel Form Submission",
@@ -49,6 +49,7 @@ export default function ContactPage() {
                   <p><strong>Date:</strong> ${values.date}</p>
                   <p><strong>Number of Travelers:</strong> ${values.travelers}</p>
                   <p><strong>Number of Days:</strong> ${values.days}</p>
+                  <p><strong>Message:</strong> ${values.message}</p>
                 </body>
               </html>
             `,
@@ -69,17 +70,20 @@ export default function ContactPage() {
     },
   })
 
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  }
+  const fadeIn = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }
 
   return (
     <main>
       {/* Hero Section */}
       <section className="relative h-[400px] w-full">
         <div className="absolute inset-0">
-          <Image src="/images/islam-3782623_1280.jpg" alt="Contact Us" fill className="object-cover brightness-75" priority />
+          <Image
+            src="/images/islam-3782623_1280.jpg"
+            alt="Contact Us"
+            fill
+            className="object-cover brightness-75"
+            priority
+          />
         </div>
         <div className="absolute">
           <div className="container mx-auto px-4 h-full flex flex-col justify-center">
@@ -97,7 +101,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Info */}
+      {/* Contact Info + Form */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -142,36 +146,66 @@ export default function ContactPage() {
                   <InputField id="contact" label="Contact No" placeholder="03XX-XXXXXXX" formik={formik} />
                 </div>
 
-                <div className="mb-4">
-                  <label htmlFor="destination" className="block text-gray-700 mb-2">
-                    Travel From<span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    id="destination"
-                    {...formik.getFieldProps("destination")}
-                    className="w-full p-3 border border-gray-300 rounded-md"
-                  >
-                    <option value="">Select City</option>
-                    <option value="Islamabad">Islamabad</option>
-                    <option value="Karachi">Karachi</option>
-                    <option value="Lahore">Lahore</option>
-                    <option value="Multan">Multan</option>
-                    <option value="Peshawar">Peshawar</option>
-                    <option value="Quetta">Quetta</option>
-                    <option value="Sialkot">Sialkot</option>
-                  </select>
-                  {formik.touched.destination && formik.errors.destination && (
-                    <p className="text-red-500 text-sm">{formik.errors.destination}</p>
-                  )}
-                </div>
+                <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+  {/* Travel From */}
+  <div>
+    <label htmlFor="destination" className="block text-gray-700 mb-2">
+      Travel From <span className="text-red-500">*</span>
+    </label>
+    <select
+      id="destination"
+      {...formik.getFieldProps("destination")}
+      className="w-full p-3 border border-gray-300 rounded-md"
+    >
+      <option value="">Select City</option>
+      <option value="Islamabad">Islamabad</option>
+      <option value="Karachi">Karachi</option>
+      <option value="Lahore">Lahore</option>
+      <option value="Multan">Multan</option>
+      <option value="Peshawar">Peshawar</option>
+      <option value="Quetta">Quetta</option>
+      <option value="Sialkot">Sialkot</option>
+    </select>
+    {formik.touched.destination && formik.errors.destination && (
+      <p className="text-primary text-sm">{formik.errors.destination}</p>
+    )}
+  </div>
+
+  {/* Number of Days */}
+  <div>
+    <InputField
+      id="days"
+      label="Number of Days"
+      placeholder="No. of Days"
+      type="number"
+      formik={formik}
+    />
+  </div>
+</div>
+
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <InputField id="date" label="Travel Date" type="date" formik={formik} />
                   <InputField id="travelers" label="Number of Travelers" placeholder="No. of Travelers" type="number" formik={formik} />
                 </div>
 
+                
+
+                {/* New Message Textarea */}
                 <div className="mb-6">
-                  <InputField id="days" label="Number of Days"  placeholder="No. of Days" type="number" formik={formik} />
+                  <label htmlFor="message" className="block text-gray-700 mb-2">
+                    Message <span className="text-red-500">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={4}
+                    placeholder="Your message..."
+                    {...formik.getFieldProps("message")}
+                    className="w-full p-3 border border-gray-300 rounded-md"
+                  />
+                  {formik.touched.message && formik.errors.message && (
+                    <p className="text-primary text-sm">{formik.errors.message}</p>
+                  )}
                 </div>
 
                 <button
@@ -186,7 +220,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
       {/* Map Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -269,7 +302,6 @@ export default function ContactPage() {
   )
 }
 
-// Contact detail block
 function ContactDetail({ icon, title, content }: { icon: React.ReactNode; title: string; content: string }) {
   return (
     <div className="flex items-start">
@@ -309,7 +341,7 @@ function InputField({
         className="w-full p-3 border border-gray-300 rounded-md"
       />
       {formik.touched[id] && formik.errors[id] && (
-        <p className="text-red-500 text-sm">{formik.errors[id]}</p>
+        <p className="text-primary text-sm">{formik.errors[id]}</p>
       )}
     </div>
   )
