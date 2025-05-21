@@ -1,12 +1,12 @@
 "use client";
 
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { FaArrowRight, FaCheck, FaStar,FaWhatsapp } from "react-icons/fa";
-import { MdOutlineAreaChart } from "react-icons/md";
+import { FaArrowRight, FaCheck, FaStar } from "react-icons/fa";
 import { GoGoal } from "react-icons/go";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { MdOutlineAreaChart } from "react-icons/md";
 import * as Yup from "yup";
 
 export default function Home() {
@@ -104,17 +104,29 @@ export default function Home() {
   return (
     <main className="overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative h-[500px] w-full">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/islam-3782623_1280.jpg"
-            alt="Mecca Skyline"
-            fill
-            className="object-cover brightness-75"
-            priority
+      <section className="relative h-[600px] w-full overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover brightness-75"
+          >
+            <source src="/video/khanaKaba.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div
+            className="absolute inset-0 z-10"
+            style={{
+              background:
+                `linear-gradient(270deg, rgba(4, 20, 36, 0) 0.78%, rgba(4, 20, 36, 0.5) 100%), ` +
+                `linear-gradient(180deg, rgba(4, 20, 36, 0.5) 0%, rgba(0, 0, 0, 0) 12.19%)`,
+            }}
           />
         </div>
-        <div className="absolute ">
+
+        <div className="absolute z-10 inset-0">
           <div className="container mx-auto px-4 h-full flex flex-col justify-center">
             <motion.div
               initial="hidden"
@@ -887,25 +899,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-
-            {/* WhatsApp Floating Button */}
-            <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 1 }}
-        className="fixed bottom-6 right-6 z-50"
-      >
-        <a
-          href="https://wa.me/923116903641" // Replace with your WhatsApp number
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 flex items-center justify-center"
-          style={{ width: '60px', height: '60px' }}
-        >
-          <FaWhatsapp size={30} />
-        </a>
-      </motion.div>
     </main>
   );
 }

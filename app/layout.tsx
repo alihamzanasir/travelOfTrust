@@ -6,6 +6,7 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 // import { ThemeProvider } from "@/components/theme-provider"
 import ThemeHydrationWrapper from "@/components/ThemeHydrationWrapper"
+import WhatsAppButton from "@/components/WhatsAppButton"
 
 
 const inter = Inter({ subsets: ["latin"] })
@@ -32,6 +33,8 @@ export default async function RootLayout({
             {children}
           <Footer />
           </ThemeHydrationWrapper>
+
+          <WhatsAppButton />
         {/* </ThemeProvider> */}
       </body>
     </html>
