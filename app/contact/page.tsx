@@ -28,7 +28,6 @@ export default function ContactPage() {
       date: Yup.string().required("Travel date is required"),
       travelers: Yup.number().required("Number of travelers is required").typeError("Must be a number"),
       days: Yup.number().required("Number of days is required").typeError("Must be a number"),
-      message: Yup.string().required("Message is required")
     }),
     onSubmit: async (values, { resetForm, setSubmitting }) => {
       try {
@@ -49,13 +48,12 @@ export default function ContactPage() {
                   <p><strong>Date:</strong> ${values.date}</p>
                   <p><strong>Number of Travelers:</strong> ${values.travelers}</p>
                   <p><strong>Number of Days:</strong> ${values.days}</p>
-                  <p><strong>Message:</strong> ${values.message}</p>
+                  <p><strong>Message:</strong> ${values?.message || "No message write from user hand"}</p>
                 </body>
               </html>
             `,
           }),
         })
-
         if (response.ok) {
           setIsSubmitted(true)
           resetForm()
@@ -119,8 +117,8 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <ContactDetail icon={<FaMapMarkerAlt />} title="Our Location" content="Street No. 3, Hamza Town, Bahawalpur, Punjab Pakistan." />
                 <ContactDetail icon={<FaEnvelope />} title="Email Us" content="traveloftrust25@gmail.com" />
-                <ContactDetail icon={<FaPhone />} title="Call Us" content="+92 311 690 36 41" />
-                <ContactDetail icon={<FaWhatsapp />} title="WhatsApp" content="+92 311 690 36 41" />
+                <ContactDetail icon={<FaPhone />} title="Call Us" content="+92 322 754 87 12" />
+                <ContactDetail icon={<FaWhatsapp />} title="WhatsApp" content="+92 322 754 87 12" />
               </div>
             </motion.div>
 
@@ -194,7 +192,7 @@ export default function ContactPage() {
                 {/* New Message Textarea */}
                 <div className="mb-6">
                   <label htmlFor="message" className="block text-gray-700 mb-2">
-                    Message <span className="text-red-500">*</span>
+                    Message
                   </label>
                   <textarea
                     id="message"

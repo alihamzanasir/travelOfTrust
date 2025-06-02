@@ -16,7 +16,7 @@ export default function Footer() {
               At TravelofTrust, we’re your reliable partner in making Umrah journeys smooth, meaningful, and spiritually fulfilling.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-white hover:text-purple-200 transition duration-300">
+              <Link href="https://www.facebook.com/share/16cNwrqBC5/" className="text-white hover:text-purple-200 transition duration-300">
                 <FaFacebook size={20} />
               </Link>
               <Link href="#" className="text-white hover:text-purple-200 transition duration-300">
@@ -97,9 +97,9 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-4">Contact Information</h3>
             <ul className="space-y-2">
               <li className="text-purple-100">Street No. 3, Hamza Town, Bahawalpur, Punjab Pakistan.</li>
-              <li className="text-purple-100">Phone: +92 311 690 36 41</li>
+              <li className="text-purple-100">Phone: +92 322 754 87 12</li>
               <li className="text-purple-100">Email: traveloftrust25@gmail.com</li>
-              <li className="text-purple-100">WhatsApp: +92 311 690 36 41</li>
+              <li className="text-purple-100">WhatsApp: +92 322 754 87 12</li>
             </ul>
           </div>
         </div>

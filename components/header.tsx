@@ -32,7 +32,7 @@ export default function Header() {
             <div className="flex items-center space-x-4 mb-2 md:mb-0">
               <div className="flex items-center text-sm">
                 <FaPhone className="mr-2" size={14} />
-                <span>+92 311 690 36 41</span>
+                <span>+92 322 754 87 12</span>
               </div>
               <div className="flex items-center text-sm">
                 <HiOutlineMail className="mr-2" size={14} />
@@ -46,7 +46,7 @@ export default function Header() {
               </div>
               <div className="flex items-center text-sm">
                 <FaWhatsapp className="mr-2" size={14} />
-                <span>WhatsApp: +92 311 690 36 41</span>
+                <span>WhatsApp: +92 322 754 87 12</span>
               </div>
             </div>
           </div>
