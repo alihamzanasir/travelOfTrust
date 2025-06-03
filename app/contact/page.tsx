@@ -117,8 +117,8 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <ContactDetail icon={<FaMapMarkerAlt />} title="Our Location" content="Street No. 3, Hamza Town, Bahawalpur, Punjab Pakistan." />
                 <ContactDetail icon={<FaEnvelope />} title="Email Us" content="traveloftrust25@gmail.com" />
-                <ContactDetail icon={<FaPhone />} title="Call Us" content="+92 322 754 87 12" />
-                <ContactDetail icon={<FaWhatsapp />} title="WhatsApp" content="+92 322 754 87 12" />
+                <ContactDetail icon={<FaPhone />} title="Call Us" content="+92 322 75 48 712" />
+                <ContactDetail icon={<FaWhatsapp />} title="WhatsApp" content="+92 322 75 48 712" />
               </div>
             </motion.div>
 
