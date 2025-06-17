@@ -12,6 +12,8 @@ const _document = () => {
       <meta name="x-theme-primary-foreground" content={/* get from headers */ ""} />
       <meta name="google-adsense-account" content="ca-pub-7182622830003276"></meta>
 
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182622830003276"
+     crossorigin="anonymous"></script>
     
 
     <style>{`:root {
