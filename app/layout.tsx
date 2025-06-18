@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   description:
     "TravelOfTrust provides seamless Umrah travel experiences, ensuring every journey is memorable and spiritually fulfilling.",
   generator: "v0.dev",
+    verification: {
+    google: 'ca-pub-7182622830003276', // paste the AdSense verification code here
+  },
 };
 
 export default async function RootLayout({
