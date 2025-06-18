@@ -8,6 +8,7 @@ import Footer from "@/components/footer";
 import ThemeHydrationWrapper from "@/components/ThemeHydrationWrapper";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Script from "next/script";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,11 +30,17 @@ export default async function RootLayout({
   return (
     <html suppressHydrationWarning={true}>
       <body className={inter.className} suppressHydrationWarning={true}>
-        <Script
+        <Head >
+    <Script
           async
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID}`}
           crossOrigin="anonymous"
-        ></Script>
+          ></Script>
+
+          <meta name="google-adsense-account" content="ca-pub-7182622838083276"></meta>
+          
+        </Head>
+    
 
         {/* <ThemeProvider> */}
         <ThemeHydrationWrapper>
