@@ -540,7 +540,7 @@ export default function Home() {
                   "Visa Processing",
                   "Return Air Ticket",
                 ],
-                price: "PKR. 219,000/Person",
+                price: "PKR. 259,000/Person",
                 image: "/images/mekkah-2358306_1280.jpg",
               },
               {
@@ -552,7 +552,7 @@ export default function Home() {
                   "Visa Processing",
                   "Return Air Ticket",
                 ],
-                price: "PKR. 259,000/Person",
+                price: "PKR. 289,000/Person",
                 image: "/images/islam-3782623_1280.jpg",
               },
               {
@@ -564,7 +564,7 @@ export default function Home() {
                   "Visa Processing",
                   "Return Air Ticket",
                 ],
-                price: "PKR. 279,000/Person",
+                price: "PKR. 319,000/Person",
                 image: "/images/islam-6752293_1280.jpg",
               },
             ].map((pkg, index) => (

@@ -20,7 +20,7 @@ export default function PackagesPage() {
       title: "15 Days Umrah Package",
       category: "umrah",
       duration: "15 Days",
-      price: 219000,
+      price: 259000,
       rating: 5,
       image: "/images/islam-3782623_1280.jpg",
       features: [
@@ -36,7 +36,7 @@ export default function PackagesPage() {
       title: "21 Days Umrah Package",
       category: "umrah",
       duration: "21 Days",
-      price: 239000,
+      price: 289000,
       rating: 5,
       image: "/images/islam-6752293_1280.jpg",
       features: [
@@ -52,7 +52,7 @@ export default function PackagesPage() {
       title: "28 Days Umrah Package",
       category: "umrah",
       duration: "28 Days",
-      price: 259000,
+      price: 319000,
       rating: 5,
       image: "/images/mekkah-2358306_1280.jpg",
       features: [
