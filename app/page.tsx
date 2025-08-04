@@ -515,7 +515,7 @@ export default function Home() {
             </h2>
             <div className="flex items-center justify-center gap-2 mb-4">
               <span className="text-xl font-bold text-gray-800">
-                Muharram ul Haram 1447
+               Rabi UL Awal
               </span>
               <span className="bg-primary text-white px-3 py-1 rounded-md text-sm">
                 is Open
