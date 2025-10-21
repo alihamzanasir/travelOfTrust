@@ -17,9 +17,9 @@ export default function PackagesPage() {
   const packages = [
     {
       id: 1,
-      title: "15 Days Umrah Package",
+      title: "11 Days Umrah Package",
       category: "umrah",
-      duration: "15 Days",
+      duration: "11 Days",
       price: 259000,
       rating: 5,
       image: "/images/islam-3782623_1280.jpg",
@@ -33,9 +33,9 @@ export default function PackagesPage() {
     },
     {
       id: 2,
-      title: "21 Days Umrah Package",
+      title: "15 Days Umrah Package",
       category: "umrah",
-      duration: "21 Days",
+      duration: "15 Days",
       price: 289000,
       rating: 5,
       image: "/images/islam-6752293_1280.jpg",
@@ -49,9 +49,9 @@ export default function PackagesPage() {
     },
     {
       id: 3,
-      title: "28 Days Umrah Package",
+      title: "21 Days Umrah Package",
       category: "umrah",
-      duration: "28 Days",
+      duration: "21 Days",
       price: 319000,
       rating: 5,
       image: "/images/mekkah-2358306_1280.jpg",
