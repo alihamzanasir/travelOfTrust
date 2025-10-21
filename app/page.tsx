@@ -534,7 +534,7 @@ export default function Home() {
               {
                 title: "Economy Package",
                 features: [
-                  "15 Days",
+                  "11 Days",
                   "Accommodation",
                   "Transportation",
                   "Visa Processing",
@@ -558,7 +558,7 @@ export default function Home() {
               {
                 title: "Premium Package",
                 features: [
-                  "15 Days",
+                  "21 Days",
                   "Accommodation",
                   "Transportation",
                   "Visa Processing",
