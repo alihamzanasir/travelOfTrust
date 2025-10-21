@@ -514,11 +514,11 @@ export default function Home() {
               Our Special Packages
             </h2>
             <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="text-xl font-bold text-gray-800">
+              {/* <span className="text-xl font-bold text-gray-800">
                Rabi UL Awal
-              </span>
+              </span> */}
               <span className="bg-primary text-white px-3 py-1 rounded-md text-sm">
-                is Open
+                Are Open
               </span>
             </div>
             <p className="text-gray-600 max-w-2xl mx-auto">
