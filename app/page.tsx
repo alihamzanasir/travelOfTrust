@@ -522,7 +522,7 @@ export default function Home() {
               </span>
             </div>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Our Muharram Ul Haram Umrah packages are thoughtfully designed to
+              Our packages are thoughtfully designed to
               offer comfort, convenience, and deep spiritual fulfillment. Let
               TravelofTrust take care of everything—so you can focus on what
               truly matters.
